@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulation de Paris Progressifs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="faviconH.ico" type="image/x-icon"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e2f;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input[type="number"], button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #1e1e2f;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #00cc99;
+    }
+
+    #resultat {
+      margin-top: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: white;
+      text-align: center;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #444;
+    }
+
+    address {
+      text-align: center;
+      font-style: normal;
+      margin-top: 40px;
+    }
+
+    address label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    address input[type="button"] {
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      color: #1e1e2f;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 20px 0;
+      border-top: 1px solid #444;
+    }
+
+    footer span {
+      color: #00ffcc;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      form, #resultat {
+        width: 100%;
+      }
+
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav style="background-color: #2e2e3e; padding: 15px; text-align: center;">
+  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Accueil</a>
+  <a href="index.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Analyse de match hockey</a>
+  <a href="calCote.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Calcul de Gain f(cote)</a>
+</nav>
+
+  <h1>Simulation de Paris Progressifs</h1>
+  <form onsubmit="event.preventDefault(); genererTableau();">
+    <label for="mise">Quelle est la mise de départ ?</label>
+    <input type="number" id="mise" min="1" required>
+    <button type="submit">Générer le tableau</button>
+  </form>
+
+  <div id="resultat"></div>
+
+  <br>
+  <address>
+    <label for="tel">Écrivez-moi par Gmail</label>
+    <a href="mailto:pokermike@wsym.de" onclick="alert('Vous allez être dirigé sur Gmail')">
+      <input id="tel" type="button" value="M'écrire maintenant" />
+    </a>
+  </address>
+
+  <footer>
+    &copy; 2025 Analyse Hockey PRO | Fait avec passion pour les parieurs exigeants.<br>
+    <span>BY: Joker</span>
+  </footer>
+
+  <script>
+    function genererTableau() {
+      const miseDepart = parseFloat(document.getElementById("mise").value);
+      if (isNaN(miseDepart) || miseDepart <= 0) {
+        alert("Veuillez entrer une mise valide.");
+        return;
+      }
+
+      let lignes = '';
+      let mise = miseDepart;
+
+      for (let i = 1; i <= 10; i++) {
+        const gain = mise * 2;
+        lignes += `
+          <tr>
+            <td>Pari ${i}</td>
+            <td>${mise.toFixed(2)} F CFA</td>
+            <td>${gain.toFixed(2)} F CFA</td>
+          </tr>
+        `;
+        mise *= 2;
+      }
+
+      document.getElementById("resultat").innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Pari</th>
+              <th>Montant misé</th>
+              <th>Gain potentiel</th>
+            </tr>
+          </thead>
+          <tbody>${lignes}</tbody>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>

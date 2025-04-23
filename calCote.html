@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="faviconH.ico" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="🔥 Analyse Hockey PRO – Prédictions & Paris Sportifs Gagnants" />
+  <meta property="og:description" content="Optimise tes mises et maximise tes gains avec notre outil intelligent d’analyse de matchs de hockey. Statistiques, cotes, pronostics & conseils en un clic !" />
+  <meta property="og:image" content="https://img.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://liferenew70.github.io/PRO-PREDICTION-HOCKEY/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🔥 Analyse Hockey PRO – Prédictions & Paris Sportifs Gagnants" />
+  <meta name="twitter:description" content="Optimise tes mises et maximise tes gains avec notre outil intelligent d’analyse de matchs de hockey." />
+  <meta name="twitter:image" content="https://img.jpeg" />
+
+  <title>Analyseur de Paris Sportifs</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e2f;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input[type="number"], button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #1e1e2f;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #00cc99;
+    }
+
+    #tableauParis {
+      margin: 30px auto 0;
+      max-width: 700px;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      form, #tableauParis {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav style="background-color: #2e2e3e; padding: 15px; text-align: center;">
+  <a href="calCote.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Accueil</a>
+  <a href="index.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Analyse de match hockey</a>
+  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Progression Martingale</a>
+</nav>
+
+  <h1>Analyseur de Paris Sportifs</h1>
+  <form onsubmit="event.preventDefault(); calculerParis();">
+    <label for="mise">Mise totale (F CFA) :</label>
+    <input type="number" id="mise" min="0" step="0.01" required>
+
+    <label for="cote1">Cote 1 :</label>
+    <input type="number" id="cote1" min="1" step="0.01" required>
+
+    <label for="cote2">Cote 2 :</label>
+    <input type="number" id="cote2" min="1" step="0.01" required>
+
+    <button type="submit">Calculer</button>
+  </form>
+
+  <div id="tableauParis"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let chartInstance = null;
+  
+    function calculerParis() {
+      const mise = parseFloat(document.getElementById("mise").value);
+      const cote1 = parseFloat(document.getElementById("cote1").value);
+      const cote2 = parseFloat(document.getElementById("cote2").value);
+  
+      if (isNaN(mise) || isNaN(cote1) || isNaN(cote2)) {
+        alert("Entrée invalide.");
+        return;
+      }
+  
+      const mise1 = mise / (1 + (cote1 / cote2));
+      const mise2 = mise - mise1;
+      const gain1 = mise1 * cote1;
+      const gain2 = mise2 * cote2;
+      const profit1 = gain1 - mise;
+      const profit2 = gain2 - mise;
+  
+      // --- ALERTES ---
+      let message = "✅ Résultats de l'analyse :\n\n";
+  
+      // Vérifier si mise1 ou mise2 < ou > 95
+      if (mise1 < 95) {
+        message += `⚠️ Mise Cote 1 est inférieure à 95 F : ${mise1.toFixed(2)} F CFA\n`;
+      } else {
+        message += `👍 Mise Cote 1 est correcte : ${mise1.toFixed(2)} F CFA\n`;
+      }
+  
+      if (mise2 < 95) {
+        message += `⚠️ Mise Cote 2 est inférieure à 95 F : ${mise2.toFixed(2)} F CFA\n`;
+      } else {
+        message += `👍 Mise Cote 2 est correcte : ${mise2.toFixed(2)} F CFA\n`;
+      }
+  
+      // Vérifier profit
+      message += `\n📊 Résultat financier :\n`;
+      message += `- Profit avec Cote 1 : ${profit1 >= 0 ? '✅ Gain' : '❌ Perte'} (${profit1.toFixed(2)} F CFA)\n`;
+      message += `- Profit avec Cote 2 : ${profit2 >= 0 ? '✅ Gain' : '❌ Perte'} (${profit2.toFixed(2)} F CFA)\n`;
+  
+      alert(message);
+  
+      const html = `
+        <table style="width:100%; color:white; text-align:center; border-collapse: collapse;">
+          <thead><tr>
+            <th></th>
+            <th>Cote 1 (${cote1})</th>
+            <th>Cote 2 (${cote2})</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Mise</td><td>${mise1.toFixed(2)} F CFA</td><td>${mise2.toFixed(2)} F CFA</td></tr>
+            <tr><td>Gain</td><td>${gain1.toFixed(2)} F CFA</td><td>${gain2.toFixed(2)} F CFA</td></tr>
+            <tr>
+              <td>Profit</td>
+              <td style="color:${profit1>=0?'lightgreen':'red'}">${profit1.toFixed(2)} F CFA</td>
+              <td style="color:${profit2>=0?'lightgreen':'red'}">${profit2.toFixed(2)} F CFA</td>
+            </tr>
+          </tbody>
+        </table>
+        <canvas id="camembert" width="300" height="300"></canvas>
+      `;
+  
+      document.getElementById("tableauParis").innerHTML = html;
+  
+      const ctx = document.getElementById("camembert").getContext("2d");
+      if (chartInstance) chartInstance.destroy();
+      chartInstance = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Mise Cote 1", "Mise Cote 2"],
+          datasets: [{
+            data: [mise1, mise2],
+            backgroundColor: ["#36A2EB", "#FF6384"]
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              labels: { color: 'white' },
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>
