@@ -96,19 +96,21 @@
 <nav style="background-color: #2e2e3e; padding: 15px; text-align: center;">
   <a href="calCote.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Accueil</a>
   <a href="index.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Analyse de match hockey</a>
-  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Progression Martingale</a>
+  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Martingale</a>
+  <a href="martingaleReverse.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Martingale reverse</a>
+  <a href="tuto.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">tutoriel</a>
 </nav>
 
-  <h1>Analyseur de Paris Sportifs</h1>
+  <h1>CALCUL DE MISE EN FONCTION DES COTES</h1>
   <form onsubmit="event.preventDefault(); calculerParis();">
-    <label for="mise">Mise totale (F CFA) :</label>
-    <input type="number" id="mise" min="0" step="0.01" required>
+    <label for="mise">Montant de Mise totale (Fran CFA) :</label>
+    <input type="number" id="mise" min="0" step="0.01" placeholder="exemple: 1000" required>
 
     <label for="cote1">Cote 1 :</label>
-    <input type="number" id="cote1" min="1" step="0.01" required>
+    <input type="number" id="cote1" min="1" step="0.01" placeholder="exemple: 3.12" required>
 
     <label for="cote2">Cote 2 :</label>
-    <input type="number" id="cote2" min="1" step="0.01" required>
+    <input type="number" id="cote2" min="1" step="0.01" placeholder="exemple: 2.33" required>
 
     <button type="submit">Calculer</button>
   </form>

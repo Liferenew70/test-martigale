@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulation de Paris - Budget Disponible</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="faviconH.ico" type="image/x-icon"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #9F2B68;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input[type="number"], button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #1e1e2f;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #00cc99;
+    }
+
+    #resultat {
+      margin-top: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #2e2e3e;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: white;
+      text-align: center;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #444;
+    }
+
+    address {
+      text-align: center;
+      font-style: normal;
+      margin-top: 40px;
+    }
+
+    address label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    address input[type="button"] {
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      color: #1e1e2f;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 20px 0;
+      border-top: 1px solid #444;
+    }
+
+    footer span {
+      color: #00ffcc;
+    }
+
+    nav {
+      background-color: #2e2e3e;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      form, #resultat {
+        width: 100%;
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      nav a {
+        font-size: 13px;
+        margin: 0 5px;
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="martingaleReverse.html">Accueil</a>
+  <a href="index.html">Analyse de match hockey</a>
+  <a href="calCote.html">Calcul de Gain f(cote)</a>
+  <a href="martigale.html">Martingale</a>
+  <a href="tuto.html">Tutoriel</a>
+</nav>
+
+<h1>MARTINGALE REVERSE</h1>
+<form onsubmit="event.preventDefault(); calculerParis();">
+  <label for="budget">Quel est votre budget total disponible ?</label>
+  <input type="number" id="budget" min="1" required>
+  <button type="submit">Générer les paris possibles</button>
+</form>
+
+<div id="resultat"></div>
+
+<address>
+  <label for="tel">Écrivez-moi par Télégramme</label>
+  <a href="https://t.me/Joker_smiler" onclick="alert('Vous allez être dirigé sur Telegram.');">
+    <input id="tel" type="button" value="M'écrire maintenant" />
+  </a>
+</address>
+
+<footer>
+  &copy; 2025 Analyse Hockey PRO | Fait avec passion pour les parieurs exigeants.<br>
+  <span>BY: Joker</span>
+</footer>
+
+<script>
+    function calculerParis() {
+      const budgetTotal = parseFloat(document.getElementById("budget").value);
+      const miseMin = 300;
+      let mise = miseMin;
+      let totalUtilisé = 0;
+      let lignes = '';
+      let i = 1;
+  
+      while (totalUtilisé + mise <= budgetTotal) {
+        const gain = mise * 2;
+        totalUtilisé += mise;
+        lignes += `
+          <tr>
+            <td>Pari ${i}</td>
+            <td>${mise.toFixed(0)} F CFA</td>
+            <td>${gain.toFixed(0)} F CFA</td>
+            <td>${totalUtilisé.toFixed(0)} F CFA</td>
+          </tr>
+        `;
+        mise *= 2;
+        i++;
+      }
+  
+      if (i === 1) {
+        document.getElementById("resultat").innerHTML = `<p>Votre budget est insuffisant. Il faut au moins 300 F CFA pour commencer un pari.</p>`;
+        return;
+      }
+  
+      document.getElementById("resultat").innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Pari</th>
+              <th>Montant misé</th>
+              <th>Gain potentiel</th>
+              <th>Total utilisé</th>
+            </tr>
+          </thead>
+          <tbody>${lignes}</tbody>
+        </table>
+      `;
+  
+      // Alerte du nombre de paris possibles
+      const nombreDeParis = i - 1;
+      alert(`✅ Vous pouvez faire ${nombreDeParis} pari${nombreDeParis > 1 ? 's' : ''} avec ce budget.`);
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="faviconH.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Tutoriels | Analyseur de Paris</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1e1e2f;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+  
+    nav {
+      background-color: #2e2e3e;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  
+    nav a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 10px 15px;
+      background-color: #1e1e2f;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+  
+    nav a:hover {
+      background-color: #00ffcc;
+      color: #1e1e2f;
+    }
+  
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      animation: fadeIn 2s;
+    }
+  
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+  
+    .video-container {
+      background-color: #2e2e3e;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    }
+  
+    .video-container h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+  
+    iframe,
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  
+    .telegram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: #229ED9;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(34, 158, 217, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+  }
+
+  .telegram-link:hover {
+    background-color: #1c8dc9;
+    transform: translateY(-2px);
+  }
+
+  .telegram-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 480px) {
+    .telegram-link {
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+
+    .telegram-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+  
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+  
+      nav a {
+        text-align: center;
+        font-size: 16px;
+        padding: 12px;
+      }
+  
+      h1 {
+        font-size: 1.3rem;
+      }
+  
+      .videos {
+        grid-template-columns: 1fr;
+      }
+  
+      .video-container h2 {
+        font-size: 15px;
+      }
+  
+      iframe,
+      video {
+        height: auto;
+        aspect-ratio: 16 / 9; /* Garde un ratio vidéo propre */
+      }
+    }
+  </style>
+  
+</head>
+<body>
+
+<nav>
+  <a href="tuto.html">Accueil</a>
+  <a href="index.html">Analyse de match hockey</a>
+  <a href="martigale.html">Martingale</a>
+  <a href="martingaleReverse.html">Martingale reverse</a>
+  <a href="calCote.html">Calcul de Gain f(cote)</a>
+</nav>
+
+<h1>📺 Tutoriels d'utilisation du site</h1>
+<p>Voici quelques vidéos pour vous aider à mieux comprendre comment utiliser les différentes fonctionnalités de notre site ou application pour ceux qui utilises la version en apk ou ios.</p>
+<p>Ces vidéos sont disponibles sur différentes plateformes pour votre convenance.</p>
+
+<section>
+    <h2>DEPUIS TELEGRAM</h2>
+    <a href="https://t.me/+rqyUiLD7RdlhZjY8" target="_blank" class="telegram-link">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" class="telegram-icon" />
+      ALLEZ VOIR SUR TÉLÉGRAM
+    </a>
+  </section> <br><br>
+
+
+<section><h2>DEPUIS YOUTUBE</h2>
+<div class="videos">
+  <div class="video-container">
+    <h2>🎥 Comment utiliser le calcul de mise</h2>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="video-container">
+    <h2>🎥 Explication de la martingale</h2>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="video-container">
+    <h2>🎥 Utiliser l’analyse de match hockey</h2>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <!-- Tu peux aussi insérer une vidéo locale :
+  <div class="video-container">
+    <h2>🎥 Vidéo locale exemple</h2>
+    <video controls>
+      <source src="videos/mon_tuto.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+  </div>
+  -->
+</div>
+</section>
+<section><h2>DEPUIS LE SITE</h2>
+    <div class="videos">
+        <div class="video-container">
+        <h2>🎥 Comment utiliser le calcul de mise</h2>
+        <video controls>
+            <source src="videos/calcul_mise.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+        </div>
+    
+        <div class="video-container">
+        <h2>🎥 Explication de la martingale</h2>
+        <video controls>
+            <source src="videos/explication_martingale.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+        </div>
+    
+        <div class="video-container">
+        <h2>🎥 Utiliser l’analyse de match hockey</h2>
+        <video controls>
+            <source src="videos/analyse_match_hockey.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+        </div>
+    </div>
+</section>
+<section><h2>DEPUIS GOOGLE DRIVE</h2></section>
+
+    <div class="videos">
+        <div class="video-container">
+        <h2>🎥 Comment utiliser le calcul de mise</h2>
+        <iframe src="https://drive.google.com/file/d/VIDEO_ID_1/preview" frameborder="0" allowfullscreen></iframe>
+        </div>
+    
+        <div class="video-container">
+        <h2>🎥 Explication de la martingale</h2>
+        <iframe src="https://drive.google.com/file/d/VIDEO_ID_2/preview" frameborder="0" allowfullscreen></iframe>
+        </div>
+    
+        <div class="video-container">
+        <h2>🎥 Utiliser l’analyse de match hockey</h2>
+        <iframe src="https://drive.google.com/file/d/VIDEO_ID_3/preview" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+<section>
+ <address>
+  <H2>Contact</H2>
+  <p>Pour toute question ou assistance, n'hésitez pas à nous contacter :</p>
+  <a href="https://t.me/Joker_smiler" target="_blank" class="telegram-link">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" class="telegram-icon" />
+      JOKER SMILER
+    </a>
+  
+ </address>
+</section>
+<br>
+<footer>
+  &copy; 2025 Analyse Hockey PRO | Fait avec passion pour les parieurs exigeants.<br>
+  BY: Joker
+</footer>
+</body>
+</html>

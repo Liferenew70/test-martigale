@@ -8,133 +8,215 @@
   <link rel="shortcut icon" href="faviconH.ico" type="image/x-icon"/>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #1e1e2f;
-      color: white;
-      margin: 0;
-      padding: 20px;
-    }
+  font-family: 'Poppins', sans-serif;
+  background-color: #4a235a;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
 
-    h1 {
-      text-align: center;
-      color: #00ffcc;
-    }
+h1 {
+  text-align: center;
+  color: white;
+}
 
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: #2e2e3e;
-      padding: 20px;
-      border-radius: 10px;
-    }
+form {
+  max-width: 500px;
+  margin: auto;
+  background: #2e2e3e;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    label {
-      display: block;
-      margin: 15px 0 5px;
-    }
+label {
+  display: block;
+  margin: 15px 0 5px;
+}
 
-    input[type="number"], button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
+input[type="number"], button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
 
-    button {
-      background: #00ffcc;
-      color: #1e1e2f;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+button {
+  background: #00ffcc;
+  color: #1e1e2f;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
-    button:hover {
-      background: #00cc99;
-    }
+button:hover {
+  background: #00cc99;
+}
 
-    #resultat {
-      margin-top: 30px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      background: #2e2e3e;
-      padding: 20px;
-      border-radius: 10px;
-      overflow-x: auto;
-    }
+#resultat {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #2e2e3e;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      color: white;
-      text-align: center;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  text-align: center;
+}
 
-    th, td {
-      padding: 10px;
-      border: 1px solid #444;
-    }
+th, td {
+  padding: 10px;
+  border: 1px solid #444;
+}
 
-    address {
-      text-align: center;
-      font-style: normal;
-      margin-top: 40px;
-    }
+address {
+  text-align: center;
+  font-style: normal;
+  margin-top: 40px;
+}
 
-    address label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
+address label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-    address input[type="button"] {
-      padding: 10px 20px;
-      background-color: #00ffcc;
-      border: none;
-      border-radius: 5px;
-      color: #1e1e2f;
-      cursor: pointer;
-      font-weight: bold;
-    }
+address input[type="button"] {
+  padding: 10px 20px;
+  background-color: #00ffcc;
+  border: none;
+  border-radius: 5px;
+  color: #1e1e2f;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    footer {
-      text-align: center;
-      color: #aaa;
-      font-size: 14px;
-      margin-top: 30px;
-      padding: 20px 0;
-      border-top: 1px solid #444;
-    }
+footer {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 20px 0;
+  border-top: 1px solid #444;
+}
 
-    footer span {
-      color: #00ffcc;
-    }
+footer span {
+  color: #00ffcc;
+}
 
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
+/* Menu navigation */
+nav {
+  background-color: #2e2e3e;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
 
-      form, #resultat {
-        width: 100%;
-      }
+.menu-toggle {
+  display: none;
+  background-color: #00ffcc;
+  color: #1e1e2f;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-      table {
-        font-size: 14px;
-      }
-    }
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.nav-links a {
+  color: #00ffcc;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #00ffcc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  form, #resultat {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin: auto;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  input[type="number"], button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  table th, table td {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  address input[type="button"] {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+}
+
   </style>
 </head>
 <body>
 
-<nav style="background-color: #2e2e3e; padding: 15px; text-align: center;">
-  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Accueil</a>
-  <a href="index.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Analyse de match hockey</a>
-  <a href="calCote.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Calcul de Gain f(cote)</a>
-</nav>
+  <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+    <div class="nav-links" id="navLinks">
+      <a href="martigale.html">Accueil</a>
+      <a href="index.html">Analyse de match hockey</a>
+      <a href="martingaleReverse.html">Martingale reverse</a>
+      <a href="calCote.html">Calcul de Gain f(cote)</a>
+      <a href="tuto.html">Tutoriel</a>
+    </div>
+  </nav>
 
-  <h1>Simulation de Paris Progressifs</h1>
+  <h1>MARTINGALE NORMALE</h1>
+
   <form onsubmit="event.preventDefault(); genererTableau();">
     <label for="mise">Quelle est la mise de départ ?</label>
     <input type="number" id="mise" min="1" required>
@@ -157,6 +239,11 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('active');
+    }
+
     function genererTableau() {
       const miseDepart = parseFloat(document.getElementById("mise").value);
       if (isNaN(miseDepart) || miseDepart <= 0) {
@@ -166,14 +253,17 @@
 
       let lignes = '';
       let mise = miseDepart;
+      let totalUtilisé = 0;
 
       for (let i = 1; i <= 10; i++) {
         const gain = mise * 2;
+        totalUtilisé += mise;
         lignes += `
           <tr>
             <td>Pari ${i}</td>
             <td>${mise.toFixed(2)} F CFA</td>
             <td>${gain.toFixed(2)} F CFA</td>
+            <td>${totalUtilisé.toFixed(2)} F CFA</td>
           </tr>
         `;
         mise *= 2;
@@ -186,12 +276,16 @@
               <th>Pari</th>
               <th>Montant misé</th>
               <th>Gain potentiel</th>
+              <th>Total utilisé</th>
             </tr>
           </thead>
           <tbody>${lignes}</tbody>
         </table>
       `;
+
+      alert(`💰 Total utilisé après 10 paris : ${totalUtilisé.toFixed(2)} F CFA`);
     }
   </script>
+
 </body>
 </html>

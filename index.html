@@ -117,6 +117,43 @@
       border-top: 1px solid rgba(255,255,255,0.2);
       animation: fadeIn 2s;
     }
+    .telegram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: #229ED9;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(34, 158, 217, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+  }
+
+  .telegram-link:hover {
+    background-color: #1c8dc9;
+    transform: translateY(-2px);
+  }
+
+  .telegram-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 480px) {
+    .telegram-link {
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+
+    .telegram-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
     @keyframes fadeIn {
       from {opacity: 0;}
@@ -154,14 +191,29 @@
         font-size: 0.9rem;
       }
     }
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    
   </style>
 </head>
 <body>
 
 <nav style="background-color: #2e2e3e; padding: 15px; text-align: center;">
   <a href="index.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Accueil</a>
-  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Progression Martingale</a>
+  <a href="martigale.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Martingale</a>
+  <a href="martingaleReverse.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Martingale reverse</a>
   <a href="calCote.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">Calcul de Gain f(cote)</a>
+  <a href="tuto.html" style="margin: 0 15px; color: #00ffcc; text-decoration: none; font-weight: bold;">tutoriel</a>
 </nav>
 
 
@@ -224,7 +276,17 @@
   <!-- Bouton dynamique après les résultats -->
   <div id="calculerMiseBtnContainer"></div>
 </div>
-
+<section>
+  <address>
+   <H2>Contact</H2>
+   <p>Pour toute question ou assistance, n'hésitez pas à nous contacter :</p>
+   <a href="https://t.me/Joker_smiler" target="_blank" class="telegram-link">
+     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" class="telegram-icon" />
+       JOKER SMILER
+     </a>
+   
+  </address>
+ </section>
 <br>
 <address>
   <label for="tel">Écrivez moi par Gmail</label>
